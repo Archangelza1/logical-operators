@@ -80,6 +80,54 @@ body {
     100% { transform: translate(30px, 50px); }
 }
 
+/* Navigation */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.nav-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text-secondary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-family: var(--font-main);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    color: var(--text-primary);
+    background: rgba(59, 130, 246, 0.2);
+    border-color: var(--accent-blue);
+}
+
+.nav-btn.active {
+    background: var(--accent-blue);
+    color: white;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+}
+
+.content-section {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.content-section.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* Layout Container */
 .container {
     max-width: 900px;
@@ -360,3 +408,4 @@ footer {
 .code-keyword { color: #c678dd; } /* Purple keyword */
 .code-boolean { color: #d19a66; } /* Orange boolean */
 .code-func { color: #61afef; } /* Blue function */
+.code-string { color: #98c379; } /* Green string */

@@ -1,155 +1,371 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logical Operators Playground</title>
-    <meta name="description" content="An interactive playground to learn and understand logical operators: AND, OR, and NOT.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="background-effects">
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-        <div class="glow-orb orb-3"></div>
-    </div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Logical Operators Playground</title>
+        <meta
+            name="description"
+            content="An interactive playground to learn and understand logical operators: AND, OR, and NOT."
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="background-effects">
+            <div class="glow-orb orb-1"></div>
+            <div class="glow-orb orb-2"></div>
+            <div class="glow-orb orb-3"></div>
+        </div>
 
-    <main class="container">
-        <header>
-            <h1>Python Logical Operators <span class="highlight">Playground</span></h1>
-            <p>Master the building blocks of logic used in Python. Toggle the inputs and observe how the output changes.</p>
-        </header>
+        <main class="container">
+            <header>
+                <h1>
+                    Python Logical Operators
+                    <span class="highlight">Playground</span>
+                </h1>
+                <p>
+                    Master the building blocks of logic used in Python. Toggle
+                    the inputs and observe how the output changes.
+                </p>
+            </header>
 
-        <section class="operator-card" id="operator-and">
-            <div class="card-header">
-                <h2>AND <code>and</code></h2>
-                <p>The <code>and</code> operator returns <strong>True</strong> only if <em>both</em> inputs are true. Otherwise, it returns <strong>False</strong>.</p>
-            </div>
-            <div class="interactive-area">
-                <div class="inputs">
-                    <div class="input-group">
-                        <label>Input A</label>
-                        <div class="toggle" id="and-a" onclick="toggleInput('and-a')">
-                            <div class="toggle-track"></div>
-                            <div class="toggle-thumb"></div>
-                            <span class="toggle-label">False</span>
+            <nav class="main-nav">
+                <button
+                    class="nav-btn active"
+                    onclick="showSection('control')"
+                    id="btn-control"
+                >
+                    Control Flow
+                </button>
+                <button
+                    class="nav-btn"
+                    onclick="showSection('logical')"
+                    id="btn-logical"
+                >
+                    Logical Operators
+                </button>
+            </nav>
+
+            <div id="section-logical" class="content-section hidden">
+                <section class="operator-card" id="operator-and">
+                    <div class="card-header">
+                        <h2>AND <code>and</code></h2>
+                        <p>
+                            The <code>and</code> operator returns
+                            <strong>True</strong> only if <em>both</em> inputs
+                            are true. Otherwise, it returns
+                            <strong>False</strong>.
+                        </p>
+                    </div>
+                    <div class="interactive-area">
+                        <div class="inputs">
+                            <div class="input-group">
+                                <label>Input A</label>
+                                <div
+                                    class="toggle"
+                                    id="and-a"
+                                    onclick="toggleInput('and-a')"
+                                >
+                                    <div class="toggle-track"></div>
+                                    <div class="toggle-thumb"></div>
+                                    <span class="toggle-label">False</span>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label>Input B</label>
+                                <div
+                                    class="toggle"
+                                    id="and-b"
+                                    onclick="toggleInput('and-b')"
+                                >
+                                    <div class="toggle-track"></div>
+                                    <div class="toggle-thumb"></div>
+                                    <span class="toggle-label">False</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="input-group">
-                        <label>Input B</label>
-                        <div class="toggle" id="and-b" onclick="toggleInput('and-b')">
-                            <div class="toggle-track"></div>
-                            <div class="toggle-thumb"></div>
-                            <span class="toggle-label">False</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="evaluation">
-                    <div class="expression">
-                        <span id="and-expr-a" class="val-false">False</span>
-                        <span class="op">and</span>
-                        <span id="and-expr-b" class="val-false">False</span>
-                    </div>
-                    <div class="equals">=</div>
-                    <div class="output" id="and-output">
-                        <span class="val-false">False</span>
-                    </div>
-                    <div class="code-preview">
-                        <pre><code id="and-code">a = <span class="code-boolean">False</span>
+                        <div class="evaluation">
+                            <div class="expression">
+                                <span id="and-expr-a" class="val-false"
+                                    >False</span
+                                >
+                                <span class="op">and</span>
+                                <span id="and-expr-b" class="val-false"
+                                    >False</span
+                                >
+                            </div>
+                            <div class="equals">=</div>
+                            <div class="output" id="and-output">
+                                <span class="val-false">False</span>
+                            </div>
+                            <div class="code-preview">
+                                <pre><code id="and-code">a = <span class="code-boolean">False</span>
 b = <span class="code-boolean">False</span>
 result = a <span class="code-keyword">and</span> b
 <span class="code-func">print</span>(result) <span class="code-comment"># Output: False</span></code></pre>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                </section>
 
-        <section class="operator-card" id="operator-or">
-            <div class="card-header">
-                <h2>OR <code>or</code></h2>
-                <p>The <code>or</code> operator returns <strong>True</strong> if <em>at least one</em> of the inputs is true. It returns <strong>False</strong> only if both inputs are false.</p>
-            </div>
-            <div class="interactive-area">
-                <div class="inputs">
-                    <div class="input-group">
-                        <label>Input A</label>
-                        <div class="toggle" id="or-a" onclick="toggleInput('or-a')">
-                            <div class="toggle-track"></div>
-                            <div class="toggle-thumb"></div>
-                            <span class="toggle-label">False</span>
+                <section class="operator-card" id="operator-or">
+                    <div class="card-header">
+                        <h2>OR <code>or</code></h2>
+                        <p>
+                            The <code>or</code> operator returns
+                            <strong>True</strong> if <em>at least one</em> of
+                            the inputs is true. It returns
+                            <strong>False</strong> only if both inputs are
+                            false.
+                        </p>
+                    </div>
+                    <div class="interactive-area">
+                        <div class="inputs">
+                            <div class="input-group">
+                                <label>Input A</label>
+                                <div
+                                    class="toggle"
+                                    id="or-a"
+                                    onclick="toggleInput('or-a')"
+                                >
+                                    <div class="toggle-track"></div>
+                                    <div class="toggle-thumb"></div>
+                                    <span class="toggle-label">False</span>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label>Input B</label>
+                                <div
+                                    class="toggle"
+                                    id="or-b"
+                                    onclick="toggleInput('or-b')"
+                                >
+                                    <div class="toggle-track"></div>
+                                    <div class="toggle-thumb"></div>
+                                    <span class="toggle-label">False</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="input-group">
-                        <label>Input B</label>
-                        <div class="toggle" id="or-b" onclick="toggleInput('or-b')">
-                            <div class="toggle-track"></div>
-                            <div class="toggle-thumb"></div>
-                            <span class="toggle-label">False</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="evaluation">
-                    <div class="expression">
-                        <span id="or-expr-a" class="val-false">False</span>
-                        <span class="op">or</span>
-                        <span id="or-expr-b" class="val-false">False</span>
-                    </div>
-                    <div class="equals">=</div>
-                    <div class="output" id="or-output">
-                        <span class="val-false">False</span>
-                    </div>
-                    <div class="code-preview">
-                        <pre><code id="or-code">a = <span class="code-boolean">False</span>
+                        <div class="evaluation">
+                            <div class="expression">
+                                <span id="or-expr-a" class="val-false"
+                                    >False</span
+                                >
+                                <span class="op">or</span>
+                                <span id="or-expr-b" class="val-false"
+                                    >False</span
+                                >
+                            </div>
+                            <div class="equals">=</div>
+                            <div class="output" id="or-output">
+                                <span class="val-false">False</span>
+                            </div>
+                            <div class="code-preview">
+                                <pre><code id="or-code">a = <span class="code-boolean">False</span>
 b = <span class="code-boolean">False</span>
 result = a <span class="code-keyword">or</span> b
 <span class="code-func">print</span>(result) <span class="code-comment"># Output: False</span></code></pre>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="operator-card" id="operator-not">
-            <div class="card-header">
-                <h2>NOT <code>not</code></h2>
-                <p>The <code>not</code> operator reverses the input. It turns <strong>True</strong> into <strong>False</strong>, and <strong>False</strong> into <strong>True</strong>.</p>
-            </div>
-            <div class="interactive-area">
-                <div class="inputs single-input">
-                    <div class="input-group">
-                        <label>Input A</label>
-                        <div class="toggle" id="not-a" onclick="toggleInput('not-a')">
-                            <div class="toggle-track"></div>
-                            <div class="toggle-thumb"></div>
-                            <span class="toggle-label">False</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="evaluation">
-                    <div class="expression">
-                        <span class="op">not</span>
-                        <span id="not-expr-a" class="val-false">False</span>
+                </section>
+
+                <section class="operator-card" id="operator-not">
+                    <div class="card-header">
+                        <h2>NOT <code>not</code></h2>
+                        <p>
+                            The <code>not</code> operator reverses the input. It
+                            turns <strong>True</strong> into
+                            <strong>False</strong>, and
+                            <strong>False</strong> into <strong>True</strong>.
+                        </p>
                     </div>
-                    <div class="equals">=</div>
-                    <div class="output" id="not-output">
-                        <span class="val-true">True</span>
-                    </div>
-                    <div class="code-preview">
-                        <pre><code id="not-code">a = <span class="code-boolean">False</span>
+                    <div class="interactive-area">
+                        <div class="inputs single-input">
+                            <div class="input-group">
+                                <label>Input A</label>
+                                <div
+                                    class="toggle"
+                                    id="not-a"
+                                    onclick="toggleInput('not-a')"
+                                >
+                                    <div class="toggle-track"></div>
+                                    <div class="toggle-thumb"></div>
+                                    <span class="toggle-label">False</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="evaluation">
+                            <div class="expression">
+                                <span class="op">not</span>
+                                <span id="not-expr-a" class="val-false"
+                                    >False</span
+                                >
+                            </div>
+                            <div class="equals">=</div>
+                            <div class="output" id="not-output">
+                                <span class="val-true">True</span>
+                            </div>
+                            <div class="code-preview">
+                                <pre><code id="not-code">a = <span class="code-boolean">False</span>
 result = <span class="code-keyword">not</span> a
 <span class="code-func">print</span>(result) <span class="code-comment"># Output: True</span></code></pre>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </section>
             </div>
-        </section>
-        
-        <footer>
-            <p>Built with ❤️ to learn programming logic.</p>
-        </footer>
-    </main>
 
-    <script src="script.js"></script>
-</body>
+            <div id="section-control" class="content-section">
+                <section class="operator-card" id="operator-if">
+                    <div class="card-header">
+                        <h2>IF <code>if</code></h2>
+                        <p>
+                            The <code>if</code> statement executes a block of
+                            code only if its condition evaluates to
+                            <strong>True</strong>.
+                        </p>
+                    </div>
+                    <div class="interactive-area">
+                        <div class="inputs single-input">
+                            <div class="input-group">
+                                <label>Condition</label>
+                                <div
+                                    class="toggle"
+                                    id="if-a"
+                                    onclick="toggleInput('if-a')"
+                                >
+                                    <div class="toggle-track"></div>
+                                    <div class="toggle-thumb"></div>
+                                    <span class="toggle-label">False</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="evaluation">
+                            <div class="expression">
+                                <span class="op">if</span>
+                                <span id="if-expr-a" class="val-false"
+                                    >False</span
+                                >:
+                            </div>
+                            <div class="equals">→</div>
+                            <div
+                                class="output"
+                                id="if-output"
+                                style="
+                                    width: auto;
+                                    padding: 1rem;
+                                    font-size: 1.5rem;
+                                "
+                            >
+                                <span class="val-false">Skipped</span>
+                            </div>
+                            <div class="code-preview">
+                                <pre><code id="if-code">condition = <span class="code-boolean">False</span>
+<span class="code-keyword">if</span> condition:
+    <span class="code-func">print</span>(<span class="code-string">"Executed"</span>) <span class="code-comment"># Skipped</span></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="operator-card" id="operator-elif">
+                    <div class="card-header">
+                        <h2>ELIF <code>elif</code></h2>
+                        <p>
+                            The <code>elif</code> (else if) statement checks
+                            another condition if the previous
+                            <code>if</code> conditions were
+                            <strong>False</strong>.
+                        </p>
+                    </div>
+                    <div class="interactive-area">
+                        <div class="inputs">
+                            <div class="input-group">
+                                <label>Condition 1 (if)</label>
+                                <div
+                                    class="toggle"
+                                    id="elif-a"
+                                    onclick="toggleInput('elif-a')"
+                                >
+                                    <div class="toggle-track"></div>
+                                    <div class="toggle-thumb"></div>
+                                    <span class="toggle-label">False</span>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label>Condition 2 (elif)</label>
+                                <div
+                                    class="toggle"
+                                    id="elif-b"
+                                    onclick="toggleInput('elif-b')"
+                                >
+                                    <div class="toggle-track"></div>
+                                    <div class="toggle-thumb"></div>
+                                    <span class="toggle-label">False</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="evaluation">
+                            <div
+                                class="expression"
+                                style="
+                                    flex-direction: column;
+                                    align-items: flex-start;
+                                    gap: 0.5rem;
+                                "
+                            >
+                                <div>
+                                    <span class="op">if</span>
+                                    <span id="elif-expr-a" class="val-false"
+                                        >False</span
+                                    >:
+                                </div>
+                                <div>
+                                    <span class="op">elif</span>
+                                    <span id="elif-expr-b" class="val-false"
+                                        >False</span
+                                    >:
+                                </div>
+                            </div>
+                            <div class="equals">→</div>
+                            <div
+                                class="output"
+                                id="elif-output"
+                                style="
+                                    width: auto;
+                                    padding: 1rem;
+                                    font-size: 1.5rem;
+                                "
+                            >
+                                <span class="val-false">Else Executed</span>
+                            </div>
+                            <div class="code-preview">
+                                <pre><code id="elif-code">cond1 = <span class="code-boolean">False</span>
+cond2 = <span class="code-boolean">False</span>
+<span class="code-keyword">if</span> cond1:
+    <span class="code-func">print</span>(<span class="code-string">"If Executed"</span>)
+<span class="code-keyword">elif</span> cond2:
+    <span class="code-func">print</span>(<span class="code-string">"Elif Executed"</span>)
+<span class="code-keyword">else</span>:
+    <span class="code-func">print</span>(<span class="code-string">"Else Executed"</span>) <span class="code-comment"># Output: Else Executed</span></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <footer>
+                <p>Built with ❤️ to learn programming logic.</p>
+            </footer>
+        </main>
+
+        <script src="script.js"></script>
+    </body>
 </html>
