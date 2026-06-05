@@ -1,0 +1,87 @@
+// State management for all inputs
+const state = {
+    'and-a': false,
+    'and-b': false,
+    'or-a': false,
+    'or-b': false,
+    'not-a': false
+};
+
+// Main toggle function called when a switch is clicked
+function toggleInput(id) {
+    // 1. Toggle the state
+    state[id] = !state[id];
+    const val = state[id];
+
+    // 2. Update the toggle UI
+    const toggleEl = document.getElementById(id);
+    const labelEl = toggleEl.querySelector('.toggle-label');
+    
+    if (val) {
+        toggleEl.classList.add('active');
+        labelEl.textContent = 'True';
+    } else {
+        toggleEl.classList.remove('active');
+        labelEl.textContent = 'False';
+    }
+
+    // 3. Re-evaluate and update the corresponding operator section
+    if (id.startsWith('and')) {
+        updateAnd();
+    } else if (id.startsWith('or')) {
+        updateOr();
+    } else if (id.startsWith('not')) {
+        updateNot();
+    }
+}
+
+// Update functions for each operator
+function updateAnd() {
+    const a = state['and-a'];
+    const b = state['and-b'];
+    const result = a && b;
+
+    updateExpressionDisplay('and-expr-a', a);
+    updateExpressionDisplay('and-expr-b', b);
+    updateOutputDisplay('and-output', result);
+}
+
+function updateOr() {
+    const a = state['or-a'];
+    const b = state['or-b'];
+    const result = a || b;
+
+    updateExpressionDisplay('or-expr-a', a);
+    updateExpressionDisplay('or-expr-b', b);
+    updateOutputDisplay('or-output', result);
+}
+
+function updateNot() {
+    const a = state['not-a'];
+    const result = !a;
+
+    updateExpressionDisplay('not-expr-a', a);
+    updateOutputDisplay('not-output', result);
+}
+
+// Helper to update the text and color in the expression area
+function updateExpressionDisplay(elementId, value) {
+    const el = document.getElementById(elementId);
+    el.textContent = value ? 'True' : 'False';
+    el.className = value ? 'val-true' : 'val-false';
+}
+
+// Helper to update the final output box
+function updateOutputDisplay(containerId, result) {
+    const container = document.getElementById(containerId);
+    const span = container.querySelector('span');
+    
+    span.textContent = result ? 'True' : 'False';
+    span.className = result ? 'val-true' : 'val-false';
+    
+    // Add a little pop animation when the result changes
+    container.style.transform = 'scale(1.1)';
+    setTimeout(() => {
+        container.style.transform = 'scale(1)';
+    }, 150);
+}

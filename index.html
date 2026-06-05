@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logical Operators Playground</title>
+    <meta name="description" content="An interactive playground to learn and understand logical operators: AND, OR, and NOT.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+
+    <main class="container">
+        <header>
+            <h1>Python Logical Operators <span class="highlight">Playground</span></h1>
+            <p>Master the building blocks of logic used in Python. Toggle the inputs and observe how the output changes.</p>
+        </header>
+
+        <section class="operator-card" id="operator-and">
+            <div class="card-header">
+                <h2>AND <code>and</code></h2>
+                <p>The <code>and</code> operator returns <strong>True</strong> only if <em>both</em> inputs are true. Otherwise, it returns <strong>False</strong>.</p>
+            </div>
+            <div class="interactive-area">
+                <div class="inputs">
+                    <div class="input-group">
+                        <label>Input A</label>
+                        <div class="toggle" id="and-a" onclick="toggleInput('and-a')">
+                            <div class="toggle-track"></div>
+                            <div class="toggle-thumb"></div>
+                            <span class="toggle-label">False</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Input B</label>
+                        <div class="toggle" id="and-b" onclick="toggleInput('and-b')">
+                            <div class="toggle-track"></div>
+                            <div class="toggle-thumb"></div>
+                            <span class="toggle-label">False</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="evaluation">
+                    <div class="expression">
+                        <span id="and-expr-a" class="val-false">False</span>
+                        <span class="op">and</span>
+                        <span id="and-expr-b" class="val-false">False</span>
+                    </div>
+                    <div class="equals">=</div>
+                    <div class="output" id="and-output">
+                        <span class="val-false">False</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="operator-card" id="operator-or">
+            <div class="card-header">
+                <h2>OR <code>or</code></h2>
+                <p>The <code>or</code> operator returns <strong>True</strong> if <em>at least one</em> of the inputs is true. It returns <strong>False</strong> only if both inputs are false.</p>
+            </div>
+            <div class="interactive-area">
+                <div class="inputs">
+                    <div class="input-group">
+                        <label>Input A</label>
+                        <div class="toggle" id="or-a" onclick="toggleInput('or-a')">
+                            <div class="toggle-track"></div>
+                            <div class="toggle-thumb"></div>
+                            <span class="toggle-label">False</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Input B</label>
+                        <div class="toggle" id="or-b" onclick="toggleInput('or-b')">
+                            <div class="toggle-track"></div>
+                            <div class="toggle-thumb"></div>
+                            <span class="toggle-label">False</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="evaluation">
+                    <div class="expression">
+                        <span id="or-expr-a" class="val-false">False</span>
+                        <span class="op">or</span>
+                        <span id="or-expr-b" class="val-false">False</span>
+                    </div>
+                    <div class="equals">=</div>
+                    <div class="output" id="or-output">
+                        <span class="val-false">False</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="operator-card" id="operator-not">
+            <div class="card-header">
+                <h2>NOT <code>not</code></h2>
+                <p>The <code>not</code> operator reverses the input. It turns <strong>True</strong> into <strong>False</strong>, and <strong>False</strong> into <strong>True</strong>.</p>
+            </div>
+            <div class="interactive-area">
+                <div class="inputs single-input">
+                    <div class="input-group">
+                        <label>Input A</label>
+                        <div class="toggle" id="not-a" onclick="toggleInput('not-a')">
+                            <div class="toggle-track"></div>
+                            <div class="toggle-thumb"></div>
+                            <span class="toggle-label">False</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="evaluation">
+                    <div class="expression">
+                        <span class="op">not</span>
+                        <span id="not-expr-a" class="val-false">False</span>
+                    </div>
+                    <div class="equals">=</div>
+                    <div class="output" id="not-output">
+                        <span class="val-true">True</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Built with ❤️ to learn programming logic.</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
