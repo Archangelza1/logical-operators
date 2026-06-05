@@ -44,6 +44,7 @@ function updateAnd() {
     updateExpressionDisplay('and-expr-a', a);
     updateExpressionDisplay('and-expr-b', b);
     updateOutputDisplay('and-output', result);
+    updateCodeBlock('and-code', 'and', a, b, result);
 }
 
 function updateOr() {
@@ -54,6 +55,7 @@ function updateOr() {
     updateExpressionDisplay('or-expr-a', a);
     updateExpressionDisplay('or-expr-b', b);
     updateOutputDisplay('or-output', result);
+    updateCodeBlock('or-code', 'or', a, b, result);
 }
 
 function updateNot() {
@@ -62,6 +64,7 @@ function updateNot() {
 
     updateExpressionDisplay('not-expr-a', a);
     updateOutputDisplay('not-output', result);
+    updateCodeBlock('not-code', 'not', a, null, result);
 }
 
 // Helper to update the text and color in the expression area
@@ -84,4 +87,23 @@ function updateOutputDisplay(containerId, result) {
     setTimeout(() => {
         container.style.transform = 'scale(1)';
     }, 150);
+}
+
+// Helper to update the python code block
+function updateCodeBlock(elementId, op, a, b, result) {
+    const el = document.getElementById(elementId);
+    const aStr = a ? 'True' : 'False';
+    const bStr = b ? 'True' : 'False';
+    const resStr = result ? 'True' : 'False';
+    
+    if (op === 'not') {
+        el.innerHTML = `a = <span class="code-boolean">${aStr}</span>
+result = <span class="code-keyword">not</span> a
+<span class="code-func">print</span>(result) <span class="code-comment"># Output: ${resStr}</span>`;
+    } else {
+        el.innerHTML = `a = <span class="code-boolean">${aStr}</span>
+b = <span class="code-boolean">${bStr}</span>
+result = a <span class="code-keyword">${op}</span> b
+<span class="code-func">print</span>(result) <span class="code-comment"># Output: ${resStr}</span>`;
+    }
 }
